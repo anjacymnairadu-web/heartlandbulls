@@ -12,6 +12,8 @@ import { Label } from "@/components/ui/label";
 import { AnimatedReveal } from "@/components/animated-reveal";
 import { AnimatedText } from "@/components/animated-text";
 import { MapPin, Mail, Phone } from "lucide-react";
+import emailjs from "@emailjs/browser";
+import { toast } from "sonner";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -20,14 +22,10 @@ export default function ContactPage() {
     phone: "",
     subject: "",
     message: "",
+    time: "",
   });
   const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Form submission logic would go here
-    setSubmitted(true);
-  };
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -36,6 +34,62 @@ export default function ContactPage() {
       ...formData,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    // Ensure form element type
+    e.preventDefault();
+    if (isSubmitting) return;
+
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      toast.error("Email service is not configured.", {
+        description: "Missing EmailJS environment variables.",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Ensure required template variable exists in the form at send-time.
+      const time = new Date().toLocaleString();
+      const timeInput = e.currentTarget.elements.namedItem(
+        "time"
+      ) as HTMLInputElement | null;
+      if (timeInput) timeInput.value = time;
+
+      await emailjs.sendForm(
+        serviceId,
+        templateId, // Template expects: {{subject}} {{email}} {{name}} {{phone}} {{time}}
+        e.currentTarget, // Pass the form element
+        publicKey
+      );
+      toast.success("Contact request sent!", {
+        description:
+          "We've received your inquiry and will contact you within 24 hours.",
+      });
+      setSubmitted(true);
+      setFormData({
+        // Reset form data
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+        time: "",
+      });
+    } catch (error) {
+      console.error("Failed to send contact request:", error);
+      toast.error("Failed to send request.", {
+        description: "Please try again later or contact us directly.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -96,6 +150,7 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  <input type="hidden" name="time" value={formData.time} />
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="name" className="font-sans">
@@ -107,6 +162,7 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleChange}
                         required
+                        disabled={isSubmitting}
                         className="border-2 border-primary/20 focus:border-secondary"
                         placeholder="Your name"
                       />
@@ -122,6 +178,7 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleChange}
                         required
+                        disabled={isSubmitting}
                         className="border-2 border-primary/20 focus:border-secondary"
                         placeholder="your@email.com"
                       />
@@ -139,6 +196,7 @@ export default function ContactPage() {
                         type="tel"
                         value={formData.phone}
                         onChange={handleChange}
+                        disabled={isSubmitting}
                         className="border-2 border-primary/20 focus:border-secondary"
                         placeholder="Your phone number"
                       />
@@ -153,6 +211,7 @@ export default function ContactPage() {
                         value={formData.subject}
                         onChange={handleChange}
                         required
+                        disabled={isSubmitting}
                         className="border-2 border-primary/20 focus:border-secondary"
                         placeholder="What is this about?"
                       />
@@ -169,6 +228,7 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={handleChange}
                       required
+                      disabled={isSubmitting}
                       rows={6}
                       className="border-2 border-primary/20 focus:border-secondary resize-none"
                       placeholder="Tell us about yourself, your family, and what you're looking for..."
@@ -179,8 +239,9 @@ export default function ContactPage() {
                     type="submit"
                     size="lg"
                     className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-sans"
+                    disabled={isSubmitting}
                   >
-                    Send Message
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
               )}
