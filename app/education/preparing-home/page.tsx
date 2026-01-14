@@ -24,7 +24,7 @@ export default function PreparingHomePage() {
 
       <section className="py-16 bg-primary/5">
         <div className="max-w-4xl mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 font-sans">Preparing Your Home</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 font-heading">Preparing Your Home</h1>
           <p className="text-xl text-foreground/70 font-serif leading-relaxed">
             Everything you need to set up your home for a new English Bulldog puppy.
           </p>
@@ -35,7 +35,7 @@ export default function PreparingHomePage() {
         <div className="max-w-4xl mx-auto px-6">
           <div className="space-y-12">
             <section>
-              <h2 className="text-3xl font-bold text-primary mb-4 font-sans">Essential Supplies</h2>
+              <h2 className="text-3xl font-bold text-primary mb-4 font-heading">Essential Supplies</h2>
               <p className="text-foreground/70 font-serif leading-relaxed mb-4">
                 Before bringing your puppy home, ensure you have these essentials ready:
               </p>
@@ -72,7 +72,7 @@ export default function PreparingHomePage() {
             </section>
 
             <section>
-              <h2 className="text-3xl font-bold text-primary mb-4 font-sans">Puppy-Proofing Your Home</h2>
+              <h2 className="text-3xl font-bold text-primary mb-4 font-heading">Puppy-Proofing Your Home</h2>
               <p className="text-foreground/70 font-serif leading-relaxed mb-4">
                 Puppies are curious and will explore everything. Make your home safe:
               </p>
@@ -100,7 +100,7 @@ export default function PreparingHomePage() {
             </section>
 
             <section>
-              <h2 className="text-3xl font-bold text-primary mb-4 font-sans">Creating a Safe Space</h2>
+              <h2 className="text-3xl font-bold text-primary mb-4 font-heading">Creating a Safe Space</h2>
               <p className="text-foreground/70 font-serif leading-relaxed mb-4">
                 Your puppy needs a designated area where they feel secure:
               </p>
@@ -121,7 +121,7 @@ export default function PreparingHomePage() {
             </section>
 
             <section>
-              <h2 className="text-3xl font-bold text-primary mb-4 font-sans">Preparing Your Family</h2>
+              <h2 className="text-3xl font-bold text-primary mb-4 font-heading">Preparing Your Family</h2>
               <p className="text-foreground/70 font-serif leading-relaxed mb-4">
                 Everyone in the household should be prepared for the new arrival:
               </p>

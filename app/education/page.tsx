@@ -52,7 +52,9 @@ export default function EducationPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
             <p className="text-sm font-bold text-secondary tracking-wide uppercase mb-3">Learn</p>
-            <h1 className="text-5xl md:text-6xl font-bold text-primary mb-6 text-balance font-sans">Breed Education</h1>
+              <h1 className="text-5xl md:text-6xl font-bold text-primary mb-6 text-balance font-heading">
+                Breed Education
+              </h1>
             <p className="text-xl text-foreground/70 font-serif leading-relaxed">
               Knowledge is the foundation of responsible ownership. Explore our educational resources to learn
               everything you need to know about English Bulldogs.
@@ -84,7 +86,7 @@ export default function EducationPage() {
                 <div className="w-14 h-14 bg-primary rounded-full flex items-center justify-center mb-6 group-hover:bg-secondary transition-colors">
                   <topic.icon className="w-7 h-7 text-primary-foreground" />
                 </div>
-                <h3 className="text-xl font-bold text-primary mb-4 font-sans group-hover:text-secondary transition-colors">
+                <h3 className="text-xl font-bold text-primary mb-4 font-heading group-hover:text-secondary transition-colors">
                   {topic.title}
                 </h3>
                 <p className="text-foreground/70 font-serif leading-relaxed">{topic.description}</p>

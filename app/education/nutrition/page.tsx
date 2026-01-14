@@ -24,7 +24,7 @@ export default function NutritionPage() {
 
       <section className="py-16 bg-primary/5">
         <div className="max-w-4xl mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 font-sans">Nutrition & Development</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 font-heading">Nutrition & Development</h1>
           <p className="text-xl text-foreground/70 font-serif leading-relaxed">
             A guide to feeding your English Bulldog from puppyhood through their senior years.
           </p>
@@ -35,7 +35,7 @@ export default function NutritionPage() {
         <div className="max-w-4xl mx-auto px-6">
           <div className="space-y-12">
             <section>
-              <h2 className="text-3xl font-bold text-primary mb-4 font-sans">Puppy Nutrition (0-12 months)</h2>
+              <h2 className="text-3xl font-bold text-primary mb-4 font-heading">Puppy Nutrition (0-12 months)</h2>
               <p className="text-foreground/70 font-serif leading-relaxed mb-4">
                 Proper nutrition during puppyhood sets the foundation for lifelong health. Puppies need nutrient-dense
                 food to support their rapid growth.
@@ -62,7 +62,7 @@ export default function NutritionPage() {
             </section>
 
             <section>
-              <h2 className="text-3xl font-bold text-primary mb-4 font-sans">Adult Nutrition (1-7 years)</h2>
+              <h2 className="text-3xl font-bold text-primary mb-4 font-heading">Adult Nutrition (1-7 years)</h2>
               <p className="text-foreground/70 font-serif leading-relaxed mb-4">
                 Adult bulldogs need a balanced diet that maintains healthy weight without excess calories.
               </p>
@@ -87,7 +87,7 @@ export default function NutritionPage() {
             </section>
 
             <section>
-              <h2 className="text-3xl font-bold text-primary mb-4 font-sans">Senior Nutrition (7+ years)</h2>
+              <h2 className="text-3xl font-bold text-primary mb-4 font-heading">Senior Nutrition (7+ years)</h2>
               <p className="text-foreground/70 font-serif leading-relaxed mb-4">
                 Older bulldogs have different nutritional needs and may benefit from senior-specific formulas.
               </p>
@@ -108,7 +108,7 @@ export default function NutritionPage() {
             </section>
 
             <section>
-              <h2 className="text-3xl font-bold text-primary mb-4 font-sans">Foods to Avoid</h2>
+              <h2 className="text-3xl font-bold text-primary mb-4 font-heading">Foods to Avoid</h2>
               <p className="text-foreground/70 font-serif leading-relaxed mb-4">
                 Some common foods are toxic or harmful to dogs:
               </p>

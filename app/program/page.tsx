@@ -10,7 +10,7 @@ export default function ProgramPage() {
     {
       icon: Heart,
       title: "Breeding Philosophy",
-      image: "/lovable-bulldog-relaxed-pose.jpg",
+      image: "/english-bulldog-relaxing-on-couch-with-family.jpg",
       description:
         "Our breeding philosophy centers on health, temperament, and breed preservation. We carefully select breeding pairs based on genetic health, conformation, and personality. Every breeding decision is made with the long-term welfare of the breed in mind, not for profit or convenience.",
       points: [
@@ -23,7 +23,7 @@ export default function ProgramPage() {
     {
       icon: Stethoscope,
       title: "Health & Wellness",
-      image: "/healthy-bulldog-walking-outdoors.jpg",
+      image: "/kids-running-with-bulldog-park.jpg",
       description:
         "Health is our top priority. All our breeding dogs undergo comprehensive health testing before breeding. We work closely with veterinary specialists to ensure our bulldogs receive the best possible care throughout their lives.",
       points: [
@@ -36,7 +36,7 @@ export default function ProgramPage() {
     {
       icon: Users,
       title: "Temperament & Socialization",
-      image: "/playful-bulldog-puppies-friendly.jpg",
+      image: "/english-bulldog-puppies-playing-with-children.jpg",
       description:
         "A well-socialized puppy becomes a confident, well-adjusted adult. From day one, our puppies are exposed to various sounds, textures, people, and experiences. We use proven early neurological stimulation techniques to help develop resilient, adaptable dogs.",
       points: [
@@ -49,7 +49,7 @@ export default function ProgramPage() {
     {
       icon: Home,
       title: "Home Environment",
-      image: "/cozy-bulldog-on-comfortable-sofa.jpg",
+      image: "/family-with-bulldog-living-room.jpg",
       description:
         "Our bulldogs live in our home as part of our family—not in kennels or commercial facilities. This home-raised approach ensures our puppies are comfortable in a family environment and well-prepared for life in their new homes.",
       points: [
@@ -62,7 +62,7 @@ export default function ProgramPage() {
     {
       icon: Shield,
       title: "Ethical Standards",
-      image: "/well-groomed-bulldog-proud-stance.jpg",
+      image: "/family-picnic-with-bulldog.jpg",
       description:
         "We adhere to the highest ethical standards in breeding. This means making responsible decisions about breeding frequency, retirement of breeding dogs, and being selective about puppy placements. We never compromise on ethics for profit.",
       points: [
@@ -75,7 +75,7 @@ export default function ProgramPage() {
     {
       icon: HeartHandshake,
       title: "Owner Support",
-      image: "/sweet-bulldog-puppy-closeup.jpg",
+      image: "/child-feeding-bulldog-puppy.jpg",
       description:
         "Our relationship with puppy families doesn't end at pickup. We provide comprehensive support including puppy care guides, ongoing advice, and a community of fellow Heartland Bulls families. We're always just a message away.",
       points: [
@@ -96,7 +96,7 @@ export default function ProgramPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
             <p className="text-sm font-bold text-secondary tracking-wide uppercase mb-3">Our Program</p>
-            <h1 className="text-5xl md:text-6xl font-bold text-primary mb-6 text-balance font-sans">
+            <h1 className="text-5xl md:text-6xl font-bold text-primary mb-6 text-balance font-heading">
               How We Raise Our Bulldogs
             </h1>
             <p className="text-xl text-foreground/70 font-serif leading-relaxed">
@@ -128,7 +128,7 @@ export default function ProgramPage() {
                   <div className="w-14 h-14 bg-primary rounded-full flex items-center justify-center">
                     <section.icon className="w-7 h-7 text-primary-foreground" />
                   </div>
-                  <h2 className="text-3xl font-bold text-primary font-sans">{section.title}</h2>
+                  <h2 className="text-3xl font-bold text-primary font-heading">{section.title}</h2>
                 </div>
                 <p className="text-foreground/70 font-serif mb-8 leading-relaxed">{section.description}</p>
                 <ul className="space-y-4">
@@ -159,7 +159,7 @@ export default function ProgramPage() {
       {/* Summary Section */}
       <section className="py-24 bg-primary/5">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold text-primary mb-6 font-sans">Our Promise to You</h2>
+          <h2 className="text-4xl font-bold text-primary mb-6 font-heading">Our Promise to You</h2>
           <p className="text-lg text-foreground/70 font-serif mb-8 leading-relaxed">
             Every Heartland Bulls puppy is raised with intention, care, and love. We stand behind our program and our
             puppies, and we're committed to being a resource for you throughout your bulldog's life. When you choose

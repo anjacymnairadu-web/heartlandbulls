@@ -16,7 +16,7 @@ export default function FAQPage() {
         },
         {
           q: "Where are you located?",
-          a: "We are based in Auckland, New Zealand and serve families throughout New Zealand and Australia.",
+          a: "We are based in New Zealand and support families across New Zealand and Australia.",
         },
         {
           q: "What makes Heartland Bulls different from other breeders?",
@@ -78,8 +78,8 @@ export default function FAQPage() {
           a: "You can reach out through our Request Information form. We are happy to answer questions, provide guidance, and share more about our program and the English Bulldog breed.",
         },
         {
-          q: "Do you work with families outside Auckland?",
-          a: "Yes. While we are located in Auckland, we welcome families from across New Zealand and Australia who are committed to responsible ownership.",
+          q: "Do you work with families across New Zealand and Australia?",
+          a: "Yes. We welcome families from across New Zealand and Australia who are committed to responsible ownership.",
         },
         {
           q: "How do you choose families for your puppies?",
@@ -102,7 +102,7 @@ export default function FAQPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
             <p className="text-sm font-bold text-secondary tracking-wide uppercase mb-3">FAQ</p>
-            <h1 className="text-5xl md:text-6xl font-bold text-primary mb-6 text-balance font-sans">
+            <h1 className="text-5xl md:text-6xl font-bold text-primary mb-6 text-balance font-heading">
               Frequently Asked Questions
             </h1>
             <p className="text-xl text-foreground/70 font-serif leading-relaxed">
@@ -119,7 +119,7 @@ export default function FAQPage() {
           <div className="space-y-16">
             {faqCategories.map((category, index) => (
               <div key={index}>
-                <h2 className="text-2xl font-bold text-primary mb-6 font-sans">{category.title}</h2>
+                <h2 className="text-2xl font-bold text-primary mb-6 font-heading">{category.title}</h2>
                 <Accordion type="single" collapsible className="space-y-4">
                   {category.questions.map((item, qIndex) => (
                     <AccordionItem
@@ -142,7 +142,7 @@ export default function FAQPage() {
 
           {/* Still Have Questions */}
           <div className="mt-16 p-8 bg-accent/10 rounded-lg text-center">
-            <h3 className="text-2xl font-bold text-primary mb-4 font-sans">Still Have Questions?</h3>
+            <h3 className="text-2xl font-bold text-primary mb-4 font-heading">Still Have Questions?</h3>
             <p className="text-foreground/70 font-serif mb-6">
               We're happy to answer any additional questions you may have about our bulldogs or our program.
             </p>

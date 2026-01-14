@@ -26,7 +26,7 @@ export default function UnderstandingPage() {
       {/* Hero Section */}
       <section className="py-16 bg-primary/5">
         <div className="max-w-4xl mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 font-sans">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 font-heading">
             Understanding the English Bulldog
           </h1>
           <p className="text-xl text-foreground/70 font-serif leading-relaxed">
@@ -40,7 +40,7 @@ export default function UnderstandingPage() {
         <div className="max-w-4xl mx-auto px-6 prose prose-lg">
           <div className="space-y-12">
             <section>
-              <h2 className="text-3xl font-bold text-primary mb-4 font-sans">A Rich History</h2>
+              <h2 className="text-3xl font-bold text-primary mb-4 font-heading">A Rich History</h2>
               <p className="text-foreground/70 font-serif leading-relaxed mb-4">
                 The English Bulldog has a fascinating history that dates back centuries. Originally bred in England for
                 bull-baiting, the breed underwent a remarkable transformation after the practice was banned in 1835.
@@ -54,7 +54,7 @@ export default function UnderstandingPage() {
             </section>
 
             <section>
-              <h2 className="text-3xl font-bold text-primary mb-4 font-sans">Physical Characteristics</h2>
+              <h2 className="text-3xl font-bold text-primary mb-4 font-heading">Physical Characteristics</h2>
               <p className="text-foreground/70 font-serif leading-relaxed mb-4">
                 English Bulldogs are medium-sized dogs with a distinctive, unmistakable appearance. They typically weigh
                 between 18-25 kg (40-55 lbs) and stand about 31-40 cm (12-16 inches) tall at the shoulder.
@@ -79,7 +79,7 @@ export default function UnderstandingPage() {
             </section>
 
             <section>
-              <h2 className="text-3xl font-bold text-primary mb-4 font-sans">Temperament & Personality</h2>
+              <h2 className="text-3xl font-bold text-primary mb-4 font-heading">Temperament & Personality</h2>
               <p className="text-foreground/70 font-serif leading-relaxed mb-4">
                 Despite their tough appearance, English Bulldogs are incredibly gentle, affectionate, and loyal. They
                 form strong bonds with their families and are known for their patience with children.
@@ -109,7 +109,7 @@ export default function UnderstandingPage() {
             </section>
 
             <section>
-              <h2 className="text-3xl font-bold text-primary mb-4 font-sans">Is an English Bulldog Right for You?</h2>
+              <h2 className="text-3xl font-bold text-primary mb-4 font-heading">Is an English Bulldog Right for You?</h2>
               <p className="text-foreground/70 font-serif leading-relaxed mb-4">
                 English Bulldogs make wonderful companions for the right families. They thrive in homes where they can
                 be close to their people and don't require excessive exercise. However, they do require commitment to

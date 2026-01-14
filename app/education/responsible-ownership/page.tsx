@@ -24,7 +24,7 @@ export default function ResponsibleOwnershipPage() {
 
       <section className="py-16 bg-primary/5">
         <div className="max-w-4xl mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 font-sans">Responsible Ownership</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 font-heading">Responsible Ownership</h1>
           <p className="text-xl text-foreground/70 font-serif leading-relaxed">
             Understanding the long-term commitment of owning an English Bulldog.
           </p>
@@ -35,7 +35,7 @@ export default function ResponsibleOwnershipPage() {
         <div className="max-w-4xl mx-auto px-6">
           <div className="space-y-12">
             <section>
-              <h2 className="text-3xl font-bold text-primary mb-4 font-sans">The Long-Term Commitment</h2>
+              <h2 className="text-3xl font-bold text-primary mb-4 font-heading">The Long-Term Commitment</h2>
               <p className="text-foreground/70 font-serif leading-relaxed mb-4">
                 Bringing an English Bulldog into your life is a commitment that spans 8-12 years or more. Before making
                 this decision, honestly assess your lifestyle and resources.
@@ -59,7 +59,7 @@ export default function ResponsibleOwnershipPage() {
             </section>
 
             <section>
-              <h2 className="text-3xl font-bold text-primary mb-4 font-sans">Financial Considerations</h2>
+              <h2 className="text-3xl font-bold text-primary mb-4 font-heading">Financial Considerations</h2>
               <p className="text-foreground/70 font-serif leading-relaxed mb-4">
                 English Bulldogs can have higher-than-average care costs. Be prepared for:
               </p>
@@ -84,7 +84,7 @@ export default function ResponsibleOwnershipPage() {
             </section>
 
             <section>
-              <h2 className="text-3xl font-bold text-primary mb-4 font-sans">Lifestyle Considerations</h2>
+              <h2 className="text-3xl font-bold text-primary mb-4 font-heading">Lifestyle Considerations</h2>
               <p className="text-foreground/70 font-serif leading-relaxed mb-4">
                 Consider how a bulldog will fit into your daily life:
               </p>
@@ -109,7 +109,7 @@ export default function ResponsibleOwnershipPage() {
             </section>
 
             <section>
-              <h2 className="text-3xl font-bold text-primary mb-4 font-sans">Choosing an Ethical Breeder</h2>
+              <h2 className="text-3xl font-bold text-primary mb-4 font-heading">Choosing an Ethical Breeder</h2>
               <p className="text-foreground/70 font-serif leading-relaxed mb-4">
                 If you decide an English Bulldog is right for you, choosing a responsible breeder is crucial:
               </p>
@@ -135,7 +135,7 @@ export default function ResponsibleOwnershipPage() {
             </section>
 
             <section>
-              <h2 className="text-3xl font-bold text-primary mb-4 font-sans">Our Commitment to Responsible Breeding</h2>
+              <h2 className="text-3xl font-bold text-primary mb-4 font-heading">Our Commitment to Responsible Breeding</h2>
               <p className="text-foreground/70 font-serif leading-relaxed">
                 At Heartland Bulls, we take our responsibility to the breed seriously. We health test all our breeding
                 dogs, provide lifetime support to puppy families, and are always available to take back any puppy we've

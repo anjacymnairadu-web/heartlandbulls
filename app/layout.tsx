@@ -30,7 +30,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="stylesheet" href="https://use.typekit.net/xxxxxxx.css" />
+        {/* Optional: if you host prater-sans-web as a CSS file, set PRATER_SANS_CSS_URL in .env.local */}
+        {process.env.PRATER_SANS_CSS_URL ? (
+          <link rel="stylesheet" href={process.env.PRATER_SANS_CSS_URL} />
+        ) : null}
       </head>
       <body className={`${newsCycle.variable} font-sans antialiased`}>
         {children}

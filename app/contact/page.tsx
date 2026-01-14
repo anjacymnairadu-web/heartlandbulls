@@ -43,7 +43,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
             <p className="text-sm font-bold text-secondary tracking-wide uppercase mb-3">Get in Touch</p>
-            <h1 className="text-5xl md:text-6xl font-bold text-primary mb-6 text-balance font-sans">Contact Us</h1>
+            <h1 className="text-5xl md:text-6xl font-bold text-primary mb-6 text-balance font-heading">Contact Us</h1>
             <p className="text-xl text-foreground/70 font-serif leading-relaxed">
               We'd love to hear from you. Whether you have questions about our bulldogs, our program, or are ready to
               enquire about a puppy, we're here to help.
@@ -58,7 +58,7 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Form */}
             <div>
-              <h2 className="text-3xl font-bold text-primary mb-6 font-sans">Request Information</h2>
+              <h2 className="text-3xl font-bold text-primary mb-6 font-heading">Request Information</h2>
               <p className="text-foreground/70 font-serif mb-8 leading-relaxed">
                 Fill out the form below and we'll get back to you as soon as possible. We look forward to learning about
                 you and answering any questions you may have.
@@ -66,7 +66,7 @@ export default function ContactPage() {
 
               {submitted ? (
                 <div className="p-8 bg-secondary/10 rounded-lg border-2 border-secondary">
-                  <h3 className="text-2xl font-bold text-primary mb-4 font-sans">Thank You!</h3>
+                  <h3 className="text-2xl font-bold text-primary mb-4 font-heading">Thank You!</h3>
                   <p className="text-foreground/70 font-serif">
                     We've received your enquiry and will be in touch soon. We typically respond within 24-48 hours.
                   </p>
@@ -165,7 +165,7 @@ export default function ContactPage() {
 
             {/* Contact Information */}
             <div>
-              <h2 className="text-3xl font-bold text-primary mb-6 font-sans">Get in Touch</h2>
+              <h2 className="text-3xl font-bold text-primary mb-6 font-heading">Get in Touch</h2>
               <p className="text-foreground/70 font-serif mb-8 leading-relaxed">
                 We welcome enquiries from families who are seriously considering adding an English Bulldog to their
                 home. Don't hesitate to reach out—we're happy to answer questions even if you're still in the early
@@ -178,31 +178,31 @@ export default function ContactPage() {
                     <MapPin className="w-5 h-5 text-primary-foreground" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-primary font-sans mb-1">Location</h3>
-                    <p className="text-foreground/70 font-serif">Auckland, New Zealand</p>
+                    <h3 className="font-bold text-primary font-heading mb-1">Location</h3>
+                    <p className="text-foreground/70 font-serif">New Zealand & Australia</p>
                     <p className="text-foreground/50 font-serif text-sm">
-                      Serving families in New Zealand and Australia
+                      Serving families across New Zealand and Australia
                     </p>
                   </div>
                 </div>
 
                 <div className="flex gap-4 items-start">
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center shrink-0">
                     <Mail className="w-5 h-5 text-primary-foreground" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-primary font-sans mb-1">Email</h3>
-                    <p className="text-foreground/70 font-serif">info@heartlandbulls.co.nz</p>
+                    <h3 className="font-bold text-primary font-heading mb-1">Email</h3>
+                    <p className="text-foreground/70 font-serif">info@heartlandbulls.com</p>
                     <p className="text-foreground/50 font-serif text-sm">We typically respond within 24-48 hours</p>
                   </div>
                 </div>
 
                 <div className="flex gap-4 items-start">
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center shrink-0">
                     <Phone className="w-5 h-5 text-primary-foreground" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-primary font-sans mb-1">Phone</h3>
+                    <h3 className="font-bold text-primary font-heading mb-1">Phone</h3>
                     <p className="text-foreground/70 font-serif">Available upon request</p>
                     <p className="text-foreground/50 font-serif text-sm">Please email first to arrange a call</p>
                   </div>
@@ -211,7 +211,7 @@ export default function ContactPage() {
 
               {/* Trust Message */}
               <div className="p-8 bg-primary/5 rounded-lg border-2 border-primary/10">
-                <h3 className="text-xl font-bold text-primary mb-4 font-sans">A Personal Note</h3>
+                <h3 className="text-xl font-bold text-primary mb-4 font-heading">A Personal Note</h3>
                 <p className="text-foreground/70 font-serif leading-relaxed mb-4">
                   When you reach out to us, you're not contacting a business—you're connecting with a family who truly
                   loves this breed. We take the time to get to know every prospective family because we want to ensure

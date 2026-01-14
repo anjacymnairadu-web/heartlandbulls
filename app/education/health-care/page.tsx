@@ -24,7 +24,7 @@ export default function HealthCarePage() {
 
       <section className="py-16 bg-primary/5">
         <div className="max-w-4xl mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 font-sans">Health & Care Guide</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 font-heading">Health & Care Guide</h1>
           <p className="text-xl text-foreground/70 font-serif leading-relaxed">
             Essential information for keeping your English Bulldog healthy and happy throughout their life.
           </p>
@@ -35,7 +35,7 @@ export default function HealthCarePage() {
         <div className="max-w-4xl mx-auto px-6">
           <div className="space-y-12">
             <section>
-              <h2 className="text-3xl font-bold text-primary mb-4 font-sans">Common Health Considerations</h2>
+              <h2 className="text-3xl font-bold text-primary mb-4 font-heading">Common Health Considerations</h2>
               <p className="text-foreground/70 font-serif leading-relaxed mb-4">
                 Like all breeds, English Bulldogs have specific health considerations that owners should be aware of.
                 Understanding these helps you provide proactive care and catch potential issues early.
@@ -61,7 +61,7 @@ export default function HealthCarePage() {
             </section>
 
             <section>
-              <h2 className="text-3xl font-bold text-primary mb-4 font-sans">Preventive Care</h2>
+              <h2 className="text-3xl font-bold text-primary mb-4 font-heading">Preventive Care</h2>
               <p className="text-foreground/70 font-serif leading-relaxed mb-4">
                 Prevention is always better than treatment. Establishing a regular care routine will help keep your
                 bulldog healthy.
@@ -89,7 +89,7 @@ export default function HealthCarePage() {
             </section>
 
             <section>
-              <h2 className="text-3xl font-bold text-primary mb-4 font-sans">Temperature Sensitivity</h2>
+              <h2 className="text-3xl font-bold text-primary mb-4 font-heading">Temperature Sensitivity</h2>
               <p className="text-foreground/70 font-serif leading-relaxed mb-4">
                 English Bulldogs are sensitive to extreme temperatures, particularly heat. Their brachycephalic nature
                 makes it difficult for them to regulate body temperature efficiently.
@@ -112,7 +112,7 @@ export default function HealthCarePage() {
             </section>
 
             <section>
-              <h2 className="text-3xl font-bold text-primary mb-4 font-sans">Exercise Requirements</h2>
+              <h2 className="text-3xl font-bold text-primary mb-4 font-heading">Exercise Requirements</h2>
               <p className="text-foreground/70 font-serif leading-relaxed mb-4">
                 Bulldogs don't require extensive exercise, but regular activity is important for maintaining a healthy
                 weight and mental stimulation.
