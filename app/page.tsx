@@ -95,22 +95,23 @@ export default function Home() {
       <section className="relative min-h-[600px] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/calm-bulldog-banner.jpg"
-            alt="Calm English Bulldog"
-            className="w-full h-full object-cover"
+            src="/family-picnic-with-bulldog.jpg"
+            alt="Family picnic with an English Bulldog"
+            className="w-full h-full object-cover object-[50%_60%]"
           />
-          <div className="absolute inset-0 bg-primary/40" />
+          {/* Primary overlay across the entire image */}
+          <div className="absolute inset-0 bg-black/60" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10 py-20 flex items-center justify-center min-h-[600px]">
           <div className="max-w-2xl w-full flex flex-col items-center text-center">
-            <p className="text-sm font-bold text-secondary tracking-wide uppercase mb-3 drop-shadow-md">
+            <p className="text-sm font-bold text-primary-foreground/90 tracking-wide uppercase mb-3 drop-shadow-md">
               Established 2015 — New Zealand & Australia
             </p>
             <h1 className="text-5xl md:text-6xl font-bold text-primary-foreground mb-6 text-balance font-heading drop-shadow-lg">
               Heartland Bulls
             </h1>
-            <p className="text-xl font-semibold text-primary-foreground/90 font-serif mb-8 drop-shadow-md leading-relaxed">
+            <p className="text-xl font-bold text-primary-foreground/90 font-serif mb-8 drop-shadow-md leading-relaxed">
               Where every bulldog is raised with love, care, and a commitment to
               the breed's best standards. We are passionate English Bulldog
               breeders dedicated to health, temperament, and family
@@ -119,7 +120,7 @@ export default function Home() {
             <Button
               asChild
               size="xl"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground"
+              className="bg-secondary hover:bg-secondary/90 text-primary-foreground"
             >
               <Link href="/contact">Request Information</Link>
             </Button>

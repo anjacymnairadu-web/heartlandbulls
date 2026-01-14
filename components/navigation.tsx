@@ -32,16 +32,16 @@ export function Navigation() {
           <Image
             src="/logo.jpeg"
             alt="Heartland Bulldogs logo"
-            width={64}
-            height={64}
-            className="md:h-12 md:w-12 h-10 w-10 rounded-full object-cover border border-primary/20 bg-background"
+            width={128}
+            height={128}
+            className="h-12 w-12 md:h-14 md:w-14 xl:h-16 xl:w-16 rounded-full object-cover border border-primary/20 bg-background"
             priority
           />
           <div>
-            <div className="text-xl md:text-2xl font-bold text-primary font-sans">
+            <div className="text-2xl md:text-3xl xl:text-2xl font-bold text-primary font-sans">
               Heartland Bulls
             </div>
-            <div className="text-xs md:text-lg italic text-secondary font-serif">
+            <div className="text-sm md:text-base xl:text-lg text-secondary font-serif">
               English Bulldog Breeder — Est. 2015
             </div>
           </div>

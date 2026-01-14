@@ -60,8 +60,8 @@ export default function AboutPage() {
             </div>
             <div className="h-96 bg-muted rounded-lg overflow-hidden border-2 border-primary/20">
               <img
-                src="/mother-daughter-cuddling-bulldog.jpg"
-                alt="Mother and daughter cuddling an English Bulldog"
+                src="/gentle-english-bulldog-portrait.jpg"
+                alt="Gentle English Bulldog with kind eyes"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -75,8 +75,8 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="order-2 md:order-1 h-96 bg-muted rounded-lg overflow-hidden border-2 border-primary/20">
               <img
-                src="/children-playing-with-english-bulldog-backyard.jpg"
-                alt="Children playing with an English Bulldog in the backyard"
+                src="/happy-bulldog-in-sunny-garden.jpg"
+                alt="Happy English Bulldog enjoying a sunny garden"
                 className="w-full h-full object-cover"
               />
             </div>

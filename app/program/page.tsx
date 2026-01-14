@@ -10,7 +10,7 @@ export default function ProgramPage() {
     {
       icon: Heart,
       title: "Breeding Philosophy",
-      image: "/english-bulldog-relaxing-on-couch-with-family.jpg",
+      image: "/lovable-bulldog-relaxed-pose.jpg",
       description:
         "Our breeding philosophy centers on health, temperament, and breed preservation. We carefully select breeding pairs based on genetic health, conformation, and personality. Every breeding decision is made with the long-term welfare of the breed in mind, not for profit or convenience.",
       points: [
@@ -23,7 +23,7 @@ export default function ProgramPage() {
     {
       icon: Stethoscope,
       title: "Health & Wellness",
-      image: "/kids-running-with-bulldog-park.jpg",
+      image: "/healthy-bulldog-walking-outdoors.jpg",
       description:
         "Health is our top priority. All our breeding dogs undergo comprehensive health testing before breeding. We work closely with veterinary specialists to ensure our bulldogs receive the best possible care throughout their lives.",
       points: [
@@ -36,7 +36,7 @@ export default function ProgramPage() {
     {
       icon: Users,
       title: "Temperament & Socialization",
-      image: "/english-bulldog-puppies-playing-with-children.jpg",
+      image: "/playful-bulldog-puppies-friendly.jpg",
       description:
         "A well-socialized puppy becomes a confident, well-adjusted adult. From day one, our puppies are exposed to various sounds, textures, people, and experiences. We use proven early neurological stimulation techniques to help develop resilient, adaptable dogs.",
       points: [
@@ -49,7 +49,7 @@ export default function ProgramPage() {
     {
       icon: Home,
       title: "Home Environment",
-      image: "/family-with-bulldog-living-room.jpg",
+      image: "/cozy-bulldog-on-comfortable-sofa.jpg",
       description:
         "Our bulldogs live in our home as part of our family—not in kennels or commercial facilities. This home-raised approach ensures our puppies are comfortable in a family environment and well-prepared for life in their new homes.",
       points: [
@@ -62,7 +62,7 @@ export default function ProgramPage() {
     {
       icon: Shield,
       title: "Ethical Standards",
-      image: "/family-picnic-with-bulldog.jpg",
+      image: "/well-groomed-bulldog-proud-stance.jpg",
       description:
         "We adhere to the highest ethical standards in breeding. This means making responsible decisions about breeding frequency, retirement of breeding dogs, and being selective about puppy placements. We never compromise on ethics for profit.",
       points: [
@@ -75,7 +75,7 @@ export default function ProgramPage() {
     {
       icon: HeartHandshake,
       title: "Owner Support",
-      image: "/child-feeding-bulldog-puppy.jpg",
+      image: "/sweet-bulldog-puppy-closeup.jpg",
       description:
         "Our relationship with puppy families doesn't end at pickup. We provide comprehensive support including puppy care guides, ongoing advice, and a community of fellow Heartland Bulls families. We're always just a message away.",
       points: [
