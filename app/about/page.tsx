@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { CTASection } from "@/components/cta-section";
+import { AnimatedImage } from "@/components/animated-image";
+import { AnimatedText } from "@/components/animated-text";
 
 export default function AboutPage() {
   return (
@@ -16,8 +18,8 @@ export default function AboutPage() {
             <p className="text-base md:text-lg font-bold text-secondary tracking-wide uppercase mb-3">
               About Us
             </p>
-            <h1 className="text-5xl md:text-6xl font-bold text-primary mb-6 text-balance font-heading">
-              About Heartland Bulls
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-primary mb-6 text-balance font-heading">
+              <AnimatedText text="About Heartland Bulls" />
             </h1>
             <p className="text-xl text-foreground/70 font-serif leading-relaxed">
               A family-run breeding program built on love, dedication, and an
@@ -58,11 +60,13 @@ export default function AboutPage() {
                 importantly, the wellbeing of our bulldogs.
               </p>
             </div>
-            <div className="h-96 bg-muted rounded-lg overflow-hidden border-2 border-primary/20">
-              <img
+            <div className="h-96">
+              <AnimatedImage
                 src="/gentle-english-bulldog-portrait.jpg"
                 alt="Gentle English Bulldog with kind eyes"
                 className="w-full h-full object-cover"
+                variant="wipe"
+                containerClassName="bg-muted rounded-lg overflow-hidden border-2 border-primary/20"
               />
             </div>
           </div>
@@ -73,11 +77,13 @@ export default function AboutPage() {
       <section className="py-24 bg-accent/10">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1 h-96 bg-muted rounded-lg overflow-hidden border-2 border-primary/20">
-              <img
+            <div className="order-2 md:order-1 h-96">
+              <AnimatedImage
                 src="/happy-bulldog-in-sunny-garden.jpg"
                 alt="Happy English Bulldog enjoying a sunny garden"
                 className="w-full h-full object-cover"
+                variant="wipe-right"
+                containerClassName="bg-muted rounded-lg overflow-hidden border-2 border-primary/20"
               />
             </div>
             <div className="order-1 md:order-2">

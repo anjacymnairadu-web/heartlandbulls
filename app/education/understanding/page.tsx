@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { CTASection } from "@/components/cta-section"
+import { AnimatedReveal } from "@/components/animated-reveal"
+import { AnimatedText } from "@/components/animated-text"
 import { ArrowLeft } from "lucide-react"
 
 export default function UnderstandingPage() {
@@ -27,11 +29,11 @@ export default function UnderstandingPage() {
       <section className="py-16 bg-primary/5">
         <div className="max-w-4xl mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 font-heading">
-            Understanding the English Bulldog
+            <AnimatedText text="Understanding the English Bulldog" />
           </h1>
-          <p className="text-xl text-foreground/70 font-serif leading-relaxed">
+          <AnimatedReveal as="p" className="text-xl text-foreground/70 font-serif leading-relaxed" delayMs={120}>
             A comprehensive guide to the history, characteristics, and personality of this beloved breed.
-          </p>
+          </AnimatedReveal>
         </div>
       </section>
 

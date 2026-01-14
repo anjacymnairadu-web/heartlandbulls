@@ -6,6 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { CTASection } from "@/components/cta-section";
+import { AnimatedImage } from "@/components/animated-image";
+import { AnimatedReveal } from "@/components/animated-reveal";
+import { AnimatedText } from "@/components/animated-text";
 import {
   Award,
   Bed,
@@ -94,10 +97,11 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative min-h-[600px] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <AnimatedImage
             src="/family-picnic-with-bulldog.jpg"
             alt="Family picnic with an English Bulldog"
             className="w-full h-full object-cover object-[50%_60%]"
+            disableAnimation
           />
           {/* Primary overlay across the entire image */}
           <div className="absolute inset-0 bg-black/60" />
@@ -105,18 +109,27 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-6 relative z-10 py-20 flex items-center justify-center min-h-[600px]">
           <div className="max-w-2xl w-full flex flex-col items-center text-center">
-            <p className="text-sm font-bold text-primary-foreground/90 tracking-wide uppercase mb-3 drop-shadow-md">
+            <AnimatedReveal
+              as="p"
+              className="text-sm font-bold text-primary-foreground/90 tracking-wide uppercase mb-3 drop-shadow-md"
+              variant="slide-up"
+            >
               Established 2015 — New Zealand & Australia
-            </p>
-            <h1 className="text-5xl md:text-6xl font-bold text-primary-foreground mb-6 text-balance font-heading drop-shadow-lg">
-              Heartland Bulls
+            </AnimatedReveal>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-primary-foreground mb-6 text-balance font-heading drop-shadow-lg">
+              <AnimatedText text="Heartland Bulls" />
             </h1>
-            <p className="text-xl font-bold text-primary-foreground/90 font-serif mb-8 drop-shadow-md leading-relaxed">
+            <AnimatedReveal
+              as="p"
+              className="text-xl font-bold text-primary-foreground/90 font-serif mb-8 drop-shadow-md leading-relaxed"
+              variant="slide-up"
+              delayMs={120}
+            >
               Where every bulldog is raised with love, care, and a commitment to
               the breed's best standards. We are passionate English Bulldog
               breeders dedicated to health, temperament, and family
               companionship.
-            </p>
+            </AnimatedReveal>
             <Button
               asChild
               size="xl"
@@ -160,7 +173,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <p className="text-sm font-bold text-secondary tracking-wide uppercase mb-3">
+              <p className="text-base md:text-lg  font-bold text-secondary tracking-wide uppercase mb-3">
                 Who We Are
               </p>
               <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6 text-balance font-heading">
@@ -187,11 +200,13 @@ export default function Home() {
                 <Link href="/about">Learn More About Us</Link>
               </Button>
             </div>
-            <div className="h-96 bg-muted rounded-lg overflow-hidden border-2 border-primary/20">
-              <img
+            <div className="h-96">
+              <AnimatedImage
                 src="/grandmother-with-grandchild-and-english-bulldog.jpg"
                 alt="Grandmother with grandchild and an English Bulldog"
                 className="w-full h-full object-cover"
+                variant="wipe"
+                containerClassName="bg-muted rounded-lg overflow-hidden border-2 border-primary/20"
               />
             </div>
           </div>
@@ -202,7 +217,7 @@ export default function Home() {
       <section className="py-24 bg-accent/10">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="text-sm font-bold text-secondary tracking-wide uppercase mb-3">
+            <p className="text-base md:text-lg font-bold text-secondary tracking-wide uppercase mb-3">
               What We Stand For
             </p>
             <h2 className="text-4xl md:text-5xl font-bold text-primary font-heading">
@@ -257,15 +272,17 @@ export default function Home() {
       <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1 h-96 bg-muted rounded-lg overflow-hidden border-2 border-primary/20">
-              <img
+            <div className="order-2 md:order-1 h-96">
+              <AnimatedImage
                 src="/happy-family-receiving-bulldog-puppy.jpg"
                 alt="Happy family receiving an English Bulldog puppy"
                 className="w-full h-full object-cover"
+                variant="wipe-right"
+                containerClassName="bg-muted rounded-lg overflow-hidden border-2 border-primary/20"
               />
             </div>
             <div className="order-1 md:order-2">
-              <p className="text-sm font-bold text-secondary tracking-wide uppercase mb-3">
+              <p className="text-base md:text-lg  font-bold text-secondary tracking-wide uppercase mb-3">
                 Why We're Trusted
               </p>
               <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6 text-balance font-heading">
@@ -298,7 +315,7 @@ export default function Home() {
       {/* Testimonial Section */}
       <section className="py-24 bg-primary/5">
         <div className="max-w-4xl mx-auto px-6">
-          <p className="text-sm font-bold text-secondary tracking-wide uppercase mb-3 text-center">
+          <p className="text-base md:text-lg  font-bold text-secondary tracking-wide uppercase mb-3 text-center">
             From Our Families
           </p>
 

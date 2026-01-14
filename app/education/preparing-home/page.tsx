@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { CTASection } from "@/components/cta-section"
+import { AnimatedReveal } from "@/components/animated-reveal"
+import { AnimatedText } from "@/components/animated-text"
 import { ArrowLeft } from "lucide-react"
 
 export default function PreparingHomePage() {
@@ -24,10 +26,12 @@ export default function PreparingHomePage() {
 
       <section className="py-16 bg-primary/5">
         <div className="max-w-4xl mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 font-heading">Preparing Your Home</h1>
-          <p className="text-xl text-foreground/70 font-serif leading-relaxed">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 font-heading">
+            <AnimatedText text="Preparing Your Home" />
+          </h1>
+          <AnimatedReveal as="p" className="text-xl text-foreground/70 font-serif leading-relaxed" delayMs={120}>
             Everything you need to set up your home for a new English Bulldog puppy.
-          </p>
+          </AnimatedReveal>
         </div>
       </section>
 

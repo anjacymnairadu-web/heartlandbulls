@@ -1,9 +1,19 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/footer"
-import { CTASection } from "@/components/cta-section"
-import { Heart, Stethoscope, Users, Home, Shield, HeartHandshake } from "lucide-react"
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Navigation } from "@/components/navigation";
+import { Footer } from "@/components/footer";
+import { CTASection } from "@/components/cta-section";
+import { AnimatedImage } from "@/components/animated-image";
+import { AnimatedReveal } from "@/components/animated-reveal";
+import { AnimatedText } from "@/components/animated-text";
+import {
+  Heart,
+  Stethoscope,
+  Users,
+  Home,
+  Shield,
+  HeartHandshake,
+} from "lucide-react";
 
 export default function ProgramPage() {
   const programSections = [
@@ -85,7 +95,7 @@ export default function ProgramPage() {
         "Access to our community of bulldog families",
       ],
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -95,14 +105,20 @@ export default function ProgramPage() {
       <section className="py-20 bg-primary/5">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
-            <p className="text-sm font-bold text-secondary tracking-wide uppercase mb-3">Our Program</p>
-            <h1 className="text-5xl md:text-6xl font-bold text-primary mb-6 text-balance font-heading">
-              How We Raise Our Bulldogs
-            </h1>
-            <p className="text-xl text-foreground/70 font-serif leading-relaxed">
-              A comprehensive look at our breeding program, health practices, and the care we provide to every bulldog
-              in our care.
+            <p className="text-base md:text-lg  font-bold text-secondary tracking-wide uppercase mb-3">
+              Our Program
             </p>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-primary mb-6 text-balance font-heading">
+              <AnimatedText text="How We Raise Our Bulldogs" />
+            </h1>
+            <AnimatedReveal
+              as="p"
+              className="text-xl text-foreground/70 font-serif leading-relaxed"
+              delayMs={120}
+            >
+              A comprehensive look at our breeding program, health practices,
+              and the care we provide to every bulldog in our care.
+            </AnimatedReveal>
           </div>
         </div>
       </section>
@@ -111,44 +127,60 @@ export default function ProgramPage() {
       <section className="py-16 bg-background border-b border-primary/10">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <p className="text-lg text-foreground/70 font-serif leading-relaxed">
-            At Heartland Bulls, we believe that exceptional bulldogs are the result of exceptional care at every stage
-            of their development. Our program is built on six pillars that guide everything we do—from selecting
-            breeding pairs to supporting families long after they take their puppy home.
+            At Heartland Bulls, we believe that exceptional bulldogs are the
+            result of exceptional care at every stage of their development. Our
+            program is built on six pillars that guide everything we do—from
+            selecting breeding pairs to supporting families long after they take
+            their puppy home.
           </p>
         </div>
       </section>
 
       {/* Program Sections */}
       {programSections.map((section, index) => (
-        <section key={section.title} className={`py-24 ${index % 2 === 0 ? "bg-background" : "bg-accent/10"}`}>
+        <section
+          key={section.title}
+          className={`py-24 ${
+            index % 2 === 0 ? "bg-background" : "bg-accent/10"
+          }`}
+        >
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-16 items-start">
-              <div className={index % 2 === 1 ? "md:order-2" : ""}>
+              <AnimatedReveal
+                className={index % 2 === 1 ? "md:order-2" : ""}
+                variant={index % 2 === 0 ? "slide-right" : "slide-left"}
+              >
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-14 h-14 bg-primary rounded-full flex items-center justify-center">
                     <section.icon className="w-7 h-7 text-primary-foreground" />
                   </div>
-                  <h2 className="text-3xl font-bold text-primary font-heading">{section.title}</h2>
+                  <h2 className="text-3xl font-bold text-primary font-heading">
+                    {section.title}
+                  </h2>
                 </div>
-                <p className="text-foreground/70 font-serif mb-8 leading-relaxed">{section.description}</p>
+                <p className="text-foreground/70 font-serif mb-8 leading-relaxed">
+                  {section.description}
+                </p>
                 <ul className="space-y-4">
                   {section.points.map((point, i) => (
                     <li key={i} className="flex gap-4 items-start">
-                      <div className="w-5 h-5 rounded-full bg-secondary flex-shrink-0 flex items-center justify-center mt-0.5">
+                      <div className="w-5 h-5 rounded-full bg-secondary shrink-0 flex items-center justify-center mt-0.5">
                         <div className="w-2 h-2 bg-primary-foreground rounded-full"></div>
                       </div>
-                      <span className="text-foreground/70 font-serif">{point}</span>
+                      <span className="text-foreground/70 font-serif">
+                        {point}
+                      </span>
                     </li>
                   ))}
                 </ul>
-              </div>
-              <div
-                className={`h-80 bg-muted rounded-lg overflow-hidden border-2 border-primary/20 ${index % 2 === 1 ? "md:order-1" : ""}`}
-              >
-                <img
+              </AnimatedReveal>
+              <div className={`h-80 ${index % 2 === 1 ? "md:order-1" : ""}`}>
+                <AnimatedImage
                   src={section.image || "/placeholder.svg"}
                   alt={section.title}
                   className="w-full h-full object-cover"
+                  variant={index % 2 === 0 ? "wipe" : "wipe-right"}
+                  containerClassName="bg-muted rounded-lg overflow-hidden border-2 border-primary/20"
                 />
               </div>
             </div>
@@ -159,11 +191,15 @@ export default function ProgramPage() {
       {/* Summary Section */}
       <section className="py-24 bg-primary/5">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold text-primary mb-6 font-heading">Our Promise to You</h2>
+          <h2 className="text-4xl font-bold text-primary mb-6 font-heading">
+            Our Promise to You
+          </h2>
           <p className="text-lg text-foreground/70 font-serif mb-8 leading-relaxed">
-            Every Heartland Bulls puppy is raised with intention, care, and love. We stand behind our program and our
-            puppies, and we're committed to being a resource for you throughout your bulldog's life. When you choose
-            Heartland Bulls, you're choosing a breeder who truly cares.
+            Every Heartland Bulls puppy is raised with intention, care, and
+            love. We stand behind our program and our puppies, and we're
+            committed to being a resource for you throughout your bulldog's
+            life. When you choose Heartland Bulls, you're choosing a breeder who
+            truly cares.
           </p>
           <Button
             asChild
@@ -182,5 +218,5 @@ export default function ProgramPage() {
 
       <Footer />
     </div>
-  )
+  );
 }
