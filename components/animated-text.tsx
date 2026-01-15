@@ -110,105 +110,97 @@ export function AnimatedText({
     };
   }, [disableAnimation]);
 
-  const renderContent = (animated: boolean) => {
-    const show = disableAnimation || inView || !animated;
-
-    if (resolvedMode === "words") {
-      return words.map((word, wordIndex) => {
-        const globalIndex = words.slice(0, wordIndex).length + wordIndex;
-        return (
-          <span key={`${word}-${wordIndex}`} className="inline">
-            <span
-              aria-hidden="true"
-              className={cn(
-                "inline-block",
-                animated && !disableAnimation
-                  ? "origin-left will-change-transform transition-transform duration-700 ease-out motion-reduce:transition-none motion-reduce:transform-none"
-                  : "",
-                show ? "scale-x-100" : "scale-x-0"
-              )}
-              style={
-                !animated || disableAnimation
-                  ? undefined
-                  : ({
-                      transitionDelay: `${
-                        delayMs + globalIndex * Math.max(staggerMs, 110)
-                      }ms`,
-                    } as React.CSSProperties)
-              }
-            >
-              {word}
-            </span>
-            {wordIndex < words.length - 1 ? (
-              <span aria-hidden="true" className="inline-block w-[0.35em]" />
-            ) : null}
-          </span>
-        );
-      });
-    }
-
-    return words.map((word, wordIndex) => {
-      const chars = Array.from(word);
-      const baseCharIndex =
-        words.slice(0, wordIndex).reduce((acc, w) => acc + w.length, 0) +
-        wordIndex; // + spaces
-
-      return (
-        <span key={`${word}-${wordIndex}`} className="inline">
-          <span className="inline-block">
-            {chars.map((ch, i) => {
-              const globalIndex = baseCharIndex + i;
-              return (
-                <span
-                  key={`${ch}-${wordIndex}-${i}`}
-                  aria-hidden="true"
-                  className={cn(
-                    "inline-block",
-                    animated && !disableAnimation
-                      ? "will-change-transform transition-all duration-500 ease-out motion-reduce:transition-none motion-reduce:transform-none"
-                      : "",
-                    show
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-2"
-                  )}
-                  style={
-                    !animated || disableAnimation
-                      ? undefined
-                      : ({
-                          transitionDelay: `${
-                            delayMs + globalIndex * staggerMs
-                          }ms`,
-                        } as React.CSSProperties)
-                  }
-                >
-                  {ch}
-                </span>
-              );
-            })}
-          </span>
-          {wordIndex < words.length - 1 ? (
-            <span aria-hidden="true" className="inline-block w-[0.35em]" />
-          ) : null}
-        </span>
-      );
-    });
-  };
-
   return (
     <Comp
       ref={ref}
       // Force stable wrapping even if parent applies `text-balance` (text-wrap: balance),
       // which can reflow mid-animation on some iPad/Safari builds.
-      className={cn(
-        "relative inline-block max-w-full",
-        className,
-        "[text-wrap:normal]"
-      )}
+      className={cn("inline-block max-w-full [text-wrap:normal]", className)}
       aria-label={text}
     >
-      {/* Invisible layout copy reserves the final width/line-breaks; animated layer wipes words in. */}
-      <span className="invisible">{renderContent(false)}</span>
-      <span className="absolute inset-0">{renderContent(true)}</span>
+      {resolvedMode === "words"
+        ? words.map((word, wordIndex) => {
+            const globalIndex = words.slice(0, wordIndex).length + wordIndex;
+            return (
+              <span key={`${word}-${wordIndex}`} className="inline">
+                <span
+                  aria-hidden="true"
+                  className={cn(
+                    "inline-block origin-left",
+                    disableAnimation
+                      ? ""
+                      : "will-change-transform transition-transform duration-700 ease-out motion-reduce:transition-none motion-reduce:transform-none",
+                    disableAnimation || inView ? "scale-x-100" : "scale-x-0"
+                  )}
+                  style={
+                    disableAnimation
+                      ? undefined
+                      : ({
+                          transitionDelay: `${
+                            delayMs + globalIndex * Math.max(staggerMs, 110)
+                          }ms`,
+                        } as React.CSSProperties)
+                  }
+                >
+                  {word}
+                </span>
+                {wordIndex < words.length - 1 ? (
+                  <span
+                    aria-hidden="true"
+                    className="inline-block w-[0.35em]"
+                  />
+                ) : null}
+              </span>
+            );
+          })
+        : words.map((word, wordIndex) => {
+            const chars = Array.from(word);
+            const baseCharIndex =
+              words.slice(0, wordIndex).reduce((acc, w) => acc + w.length, 0) +
+              wordIndex; // + spaces
+
+            return (
+              <span key={`${word}-${wordIndex}`} className="inline">
+                <span className="inline-block">
+                  {chars.map((ch, i) => {
+                    const globalIndex = baseCharIndex + i;
+                    return (
+                      <span
+                        key={`${ch}-${wordIndex}-${i}`}
+                        aria-hidden="true"
+                        className={cn(
+                          "inline-block",
+                          disableAnimation
+                            ? ""
+                            : "will-change-transform transition-all duration-500 ease-out motion-reduce:transition-none motion-reduce:transform-none",
+                          disableAnimation || inView
+                            ? "opacity-100 translate-y-0"
+                            : "opacity-0 translate-y-2"
+                        )}
+                        style={
+                          disableAnimation
+                            ? undefined
+                            : ({
+                                transitionDelay: `${
+                                  delayMs + globalIndex * staggerMs
+                                }ms`,
+                              } as React.CSSProperties)
+                        }
+                      >
+                        {ch}
+                      </span>
+                    );
+                  })}
+                </span>
+                {wordIndex < words.length - 1 ? (
+                  <span
+                    aria-hidden="true"
+                    className="inline-block w-[0.35em]"
+                  />
+                ) : null}
+              </span>
+            );
+          })}
     </Comp>
   );
 }
