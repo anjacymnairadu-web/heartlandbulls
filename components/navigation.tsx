@@ -100,10 +100,11 @@ export function Navigation() {
               key={link.name}
               href={link.href}
               className={[
-                "block text-sm font-medium py-2 transition-colors duration-200 ease-out",
+                "relative block text-sm font-medium py-2 transition-colors duration-200 ease-out",
+                "after:absolute after:left-0 after:-bottom-0.5 after:h-0.5 after:w-16 after:bg-secondary after:origin-left after:transition-transform after:duration-300 after:ease-out",
                 isActive(link.href)
-                  ? "text-primary"
-                  : "text-foreground hover:text-primary",
+                  ? "text-primary after:scale-x-100"
+                  : "text-foreground hover:text-primary after:scale-x-0 hover:after:scale-x-100",
               ].join(" ")}
               aria-current={isActive(link.href) ? "page" : undefined}
               onClick={() => setMobileMenuOpen(false)}
