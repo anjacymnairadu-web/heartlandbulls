@@ -38,6 +38,17 @@ export function AnimatedText({
   const Comp = as as any;
   const ref = useRef<HTMLElement | null>(null);
   const [inView, setInView] = useState(disableAnimation);
+  const [fontsReady, setFontsReady] = useState(disableAnimation);
+  const fontsReadyRef = useRef(fontsReady);
+  const pendingRevealRef = useRef(false);
+
+  useEffect(() => {
+    fontsReadyRef.current = fontsReady;
+    if (fontsReady && pendingRevealRef.current) {
+      pendingRevealRef.current = false;
+      setInView(true);
+    }
+  }, [fontsReady]);
 
   // Split by spaces so the browser can wrap normally on responsive layouts,
   // while still animating characters within each word.
@@ -70,8 +81,68 @@ export function AnimatedText({
 
   useEffect(() => {
     if (disableAnimation) return;
+    // If this is a heading (or uses heading font), wait until the font is ready before animating.
+    const isHeadingTag =
+      as === "h1" ||
+      as === "h2" ||
+      as === "h3" ||
+      as === "h4" ||
+      as === "h5" ||
+      as === "h6";
+    const usesHeadingFont = (className ?? "").includes("font-heading");
+    const shouldWaitForFonts = isHeadingTag || usesHeadingFont;
+
+    if (!shouldWaitForFonts) {
+      setFontsReady(true);
+      return;
+    }
+
+    if (typeof document === "undefined" || !("fonts" in document)) {
+      // Older Safari: can't reliably await font readiness; don't block animation.
+      setFontsReady(true);
+      return;
+    }
+
+    let cancelled = false;
+    const timeoutMs = 1500;
+    const timeoutId = window.setTimeout(() => {
+      if (!cancelled) setFontsReady(true);
+    }, timeoutMs);
+
+    (async () => {
+      try {
+        // Explicitly request the font faces we rely on.
+        await (document as any).fonts.load("400 1em prater-sans-web");
+        await (document as any).fonts.load("700 1em prater-sans-web");
+        await (document as any).fonts.ready;
+      } catch {
+        // ignore and fall back to timeout
+      } finally {
+        if (cancelled) return;
+        window.clearTimeout(timeoutId);
+        setFontsReady(true);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeoutId);
+    };
+  }, [as, className, disableAnimation]);
+
+  useEffect(() => {
+    if (disableAnimation) return;
     const el = ref.current;
     if (!el) return;
+
+    const requestReveal = () => {
+      if (disableAnimation) {
+        setInView(true);
+        return;
+      }
+      if (fontsReadyRef.current) setInView(true);
+      else pendingRevealRef.current = true;
+    };
 
     const isVisibleNow = () => {
       const rect = el.getBoundingClientRect();
@@ -83,11 +154,11 @@ export function AnimatedText({
     // initial "hidden" styles have a chance to paint first.
     let fallbackTimer: number | null = null;
     if (typeof window !== "undefined" && isVisibleNow()) {
-      fallbackTimer = window.setTimeout(() => setInView(true), 40);
+      fallbackTimer = window.setTimeout(() => requestReveal(), 40);
     }
 
     if (typeof window !== "undefined" && !("IntersectionObserver" in window)) {
-      setInView(true);
+      requestReveal();
       return () => {
         if (fallbackTimer != null) window.clearTimeout(fallbackTimer);
       };
@@ -96,7 +167,7 @@ export function AnimatedText({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry?.isIntersecting) {
-          setInView(true);
+          requestReveal();
           observer.disconnect();
         }
       },
