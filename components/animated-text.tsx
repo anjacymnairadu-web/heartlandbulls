@@ -123,9 +123,9 @@ export function AnimatedText({
               className={cn(
                 "inline-block",
                 animated && !disableAnimation
-                  ? "will-change-transform transition-all duration-700 ease-out motion-reduce:transition-none motion-reduce:transform-none"
+                  ? "origin-left will-change-transform transition-transform duration-700 ease-out motion-reduce:transition-none motion-reduce:transform-none"
                   : "",
-                show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+                show ? "scale-x-100" : "scale-x-0"
               )}
               style={
                 !animated || disableAnimation
@@ -197,10 +197,16 @@ export function AnimatedText({
   return (
     <Comp
       ref={ref}
-      className={cn("relative inline-block max-w-full", className)}
+      // Force stable wrapping even if parent applies `text-balance` (text-wrap: balance),
+      // which can reflow mid-animation on some iPad/Safari builds.
+      className={cn(
+        "relative inline-block max-w-full",
+        className,
+        "[text-wrap:normal]"
+      )}
       aria-label={text}
     >
-      {/* Invisible layout copy prevents reflow during staggered reveal (notably on iPad Safari). */}
+      {/* Invisible layout copy reserves the final width/line-breaks; animated layer wipes words in. */}
       <span className="invisible">{renderContent(false)}</span>
       <span className="absolute inset-0">{renderContent(true)}</span>
     </Comp>
