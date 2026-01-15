@@ -47,8 +47,8 @@ export function Navigation() {
           </div>
         </Link>
 
-        {/* Desktop Navigation (start at xl so tablets stay on hamburger) */}
-        <div className="hidden xl:flex items-center gap-6">
+        {/* Desktop Navigation (only show on xl + fine pointer, so iPads don't get "desktop" nav) */}
+        <div className="hidden xl:pointer-fine:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -68,7 +68,7 @@ export function Navigation() {
           ))}
         </div>
 
-        <div className="hidden xl:block">
+        <div className="hidden xl:pointer-fine:block">
           <Button
             asChild
             size="xl"
@@ -78,9 +78,9 @@ export function Navigation() {
           </Button>
         </div>
 
-        {/* Mobile/Tablet Menu Button */}
+        {/* Mobile/Tablet Menu Button (also used for xl touch devices like iPad "desktop" mode) */}
         <button
-          className="xl:hidden text-primary"
+          className="xl:pointer-fine:hidden text-primary"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -94,7 +94,7 @@ export function Navigation() {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-background border-t border-primary/20 px-6 py-4 space-y-4 animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="xl:pointer-fine:hidden bg-background border-t border-primary/20 px-6 py-4 space-y-4 animate-in fade-in slide-in-from-top-2 duration-200">
           {navLinks.map((link) => (
             <Link
               key={link.name}

@@ -57,8 +57,11 @@ export function AnimatedText({
     }
     if (typeof window === "undefined") return;
 
-    // Desktop (xl+) => chars; everything below => words.
-    const mqDesktop = window.matchMedia("(min-width: 1280px)");
+    // Desktop (xl+) + fine pointer => chars; otherwise => words.
+    // This prevents iPads in "desktop width" mode from using desktop animation.
+    const mqDesktop = window.matchMedia(
+      "(min-width: 1280px) and (pointer: fine)"
+    );
     const update = () => setResolvedMode(mqDesktop.matches ? "chars" : "words");
     update();
     mqDesktop.addEventListener?.("change", update);
