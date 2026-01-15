@@ -115,7 +115,12 @@ export function AnimatedText({
       ref={ref}
       // Force stable wrapping even if parent applies `text-balance` (text-wrap: balance),
       // which can reflow mid-animation on some iPad/Safari builds.
-      className={cn("inline-block max-w-full [text-wrap:normal]", className)}
+      className={cn(
+        "block w-full max-w-full",
+        className,
+        // Keep this LAST so it overrides any caller-provided `text-balance`.
+        "[text-wrap:normal]"
+      )}
       aria-label={text}
     >
       {resolvedMode === "words"
