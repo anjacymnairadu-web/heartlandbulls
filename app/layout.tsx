@@ -34,6 +34,22 @@ export default function RootLayout({
         {process.env.PRATER_SANS_CSS_URL ? (
           <link rel="stylesheet" href={process.env.PRATER_SANS_CSS_URL} />
         ) : null}
+
+        {/* Preload self-hosted heading fonts to avoid layout shift during animated headings */}
+        <link
+          rel="preload"
+          href="/fonts/prater-sans-web-regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/prater-sans-web.bold.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className={`${newsCycle.variable} font-sans antialiased`}>
         {children}
