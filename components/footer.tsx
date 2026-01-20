@@ -9,6 +9,8 @@ export function Footer() {
   const whatsappNzNumber = process.env.NEXT_PUBLIC_WHATSAPP_NZ_NUMBER;
   const whatsappAuNumber = process.env.NEXT_PUBLIC_WHATSAPP_AU_NUMBER;
 
+  const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL;
+
   const whatsappNzUrl = whatsappNzNumber
     ? `https://wa.me/${whatsappNzNumber}`
     : undefined;
@@ -110,6 +112,17 @@ export function Footer() {
                     Facebook
                   </a>
                 </li>
+              ) : null}
+              {instagramUrl ? (<li>
+                <a
+                  href={instagramUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-primary-foreground transition font-serif"
+                >
+                  Instagram
+                </a>
+              </li>
               ) : null}
               {whatsappNzUrl ? (
                 <li>

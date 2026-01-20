@@ -16,6 +16,10 @@ NEXT_PUBLIC_WHATSAPP_AU_NUMBER=61XXXXXXXXX
 
 # Optional: if you host prater-sans-web as a CSS stylesheet URL
 # PRATER_SANS_CSS_URL=https://example.com/path/to/prater-sans-web.css
+
+# Google tag (for Google Ads or GA4). For Google Ads this starts with AW-...
+# Examples: AW-123456789 or G-XXXXXXXXXX
+NEXT_PUBLIC_GOOGLE_TAG_ID=AW-123456789
 ```
 
 ### Notes

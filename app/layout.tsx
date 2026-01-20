@@ -1,8 +1,10 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { News_Cycle } from "next/font/google";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+import { GoogleTagPageView } from "@/components/google-tag";
 
 const newsCycle = News_Cycle({
   subsets: ["latin"],
@@ -27,6 +29,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const googleTagId = process.env.NEXT_PUBLIC_GOOGLE_TAG_ID;
+
   return (
     <html lang="en">
       <head>
@@ -50,9 +54,28 @@ export default function RootLayout({
           type="font/woff2"
           crossOrigin="anonymous"
         />
+
+        {googleTagId ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${googleTagId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-tag-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                window.gtag = gtag;
+                gtag('js', new Date());
+                gtag('config', '${googleTagId}');
+              `}
+            </Script>
+          </>
+        ) : null}
       </head>
       <body className={`${newsCycle.variable} font-sans antialiased`}>
         {children}
+        {googleTagId ? <GoogleTagPageView googleTagId={googleTagId} /> : null}
         <Analytics />
       </body>
     </html>

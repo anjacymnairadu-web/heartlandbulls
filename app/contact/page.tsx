@@ -68,6 +68,7 @@ export default function ContactPage() {
         e.currentTarget, // Pass the form element
         publicKey
       );
+
       toast.success("Contact request sent!", {
         description:
           "We've received your inquiry and will contact you within 24 hours.",
