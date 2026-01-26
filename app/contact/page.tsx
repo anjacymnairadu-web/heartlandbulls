@@ -9,8 +9,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
 import { AnimatedReveal } from "@/components/animated-reveal";
-import { AnimatedText } from "@/components/animated-text";
 import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
 
@@ -19,6 +26,8 @@ export default function ContactPage() {
     name: "",
     email: "",
     phone: "",
+    preferCall: false,
+    enquiryType: "",
     location: "",
     message: "",
     time: "",
@@ -32,6 +41,13 @@ export default function ContactPage() {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleCheckboxChange = (checked: boolean) => {
+    setFormData({
+      ...formData,
+      preferCall: checked,
     });
   };
 
@@ -63,7 +79,7 @@ export default function ContactPage() {
 
       await emailjs.sendForm(
         serviceId,
-        templateId, // Template expects: {{subject}} {{email}} {{name}} {{phone}} {{time}}
+        templateId, // Template expects: {{name}} {{email}} {{phone}} {{preferCall}} {{enquiryType}} {{location}} {{message}} {{time}}
         e.currentTarget, // Pass the form element
         publicKey
       );
@@ -78,6 +94,8 @@ export default function ContactPage() {
         name: "",
         email: "",
         phone: "",
+        preferCall: false,
+        enquiryType: "",
         location: "",
         message: "",
         time: "",
@@ -150,6 +168,8 @@ export default function ContactPage() {
               ) : (
             <form onSubmit={handleSubmit} className="space-y-8 mb-16">
                   <input type="hidden" name="time" value={formData.time} />
+                  <input type="hidden" name="enquiryType" value={formData.enquiryType} />
+                  <input type="hidden" name="preferCall" value={formData.preferCall ? "yes" : "no"} />
               
               {/* Your Details Section */}
               <div>
@@ -161,9 +181,6 @@ export default function ContactPage() {
                     <Label htmlFor="name" className="font-sans text-base">
                       Full Name
                       </Label>
-                    <p className="text-sm text-foreground/60 font-serif mb-2">
-                      (So we know who we're speaking with)
-                    </p>
                       <Input
                         id="name"
                         name="name"
@@ -174,15 +191,15 @@ export default function ContactPage() {
                         className="border-2 border-primary/20 focus:border-secondary"
                       placeholder="Your full name"
                       />
+                    <p className="text-sm text-foreground/60 font-serif">
+                      So we know who we're speaking with
+                    </p>
                     </div>
 
                     <div className="space-y-2">
                     <Label htmlFor="email" className="font-sans text-base">
                       Email Address
                       </Label>
-                    <p className="text-sm text-foreground/60 font-serif mb-2">
-                      (This is our main way of replying)
-                    </p>
                       <Input
                         id="email"
                         name="email"
@@ -194,15 +211,15 @@ export default function ContactPage() {
                         className="border-2 border-primary/20 focus:border-secondary"
                         placeholder="your@email.com"
                       />
+                    <p className="text-sm text-foreground/60 font-serif">
+                      This is our main way of replying
+                    </p>
                   </div>
 
                     <div className="space-y-2">
                     <Label htmlFor="phone" className="font-sans text-base">
                       Phone Number (optional)
                       </Label>
-                    <p className="text-sm text-foreground/60 font-serif mb-2">
-                      Optional — email works perfectly. If you'd prefer a call, you can mention a good time below.
-                    </p>
                       <Input
                         id="phone"
                         name="phone"
@@ -213,31 +230,98 @@ export default function ContactPage() {
                         className="border-2 border-primary/20 focus:border-secondary"
                         placeholder="Your phone number"
                       />
+                    <p className="text-sm text-foreground/60 font-serif">
+                      Optional — email works perfectly.
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="flex items-center space-x-2">
+                      <Checkbox
+                        id="preferCall"
+                        checked={formData.preferCall}
+                        onCheckedChange={handleCheckboxChange}
+                        disabled={isSubmitting}
+                        className="border-2 border-primary/30 data-[state=checked]:border-primary"
+                      />
+                      <Label
+                        htmlFor="preferCall"
+                        className="font-sans text-base cursor-pointer"
+                      >
+                        I'd prefer a phone call
+                      </Label>
                     </div>
+                    <p className="text-sm text-foreground/60 font-serif ml-6">
+                      If you'd prefer a call, you can mention a good time in your message below.
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              {/* Location Section */}
+              {/* About Your Enquiry Section */}
               <div>
                 <h3 className="text-2xl font-bold text-primary mb-4 font-heading">
                   About Your Enquiry
                 </h3>
-                <div className="space-y-2">
-                  <Label htmlFor="location" className="font-sans text-base">
-                    Where are you located?
-                  </Label>
-                  <p className="text-sm text-foreground/60 font-serif mb-2">
-                    (City / region — helps us give relevant guidance)
-                  </p>
-                  <Input
-                    id="location"
-                    name="location"
-                    value={formData.location}
-                    onChange={handleChange}
-                    disabled={isSubmitting}
-                    className="border-2 border-primary/20 focus:border-secondary"
-                    placeholder="Your city or region"
-                  />
+                <div className="space-y-6">
+                    <div className="space-y-2">
+                    <Label htmlFor="enquiryType" className="font-sans text-base">
+                      What are you most interested in learning about?
+                      </Label>
+                    <Select
+                      value={formData.enquiryType}
+                      onValueChange={(value) =>
+                        setFormData({ ...formData, enquiryType: value })
+                      }
+                        disabled={isSubmitting}
+                    >
+                      <SelectTrigger
+                        id="enquiryType"
+                        name="enquiryType"
+                        className="w-full border-2 border-primary/20 focus:border-secondary"
+                      >
+                        <SelectValue placeholder="Select an option or write in your message" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="breed-info">
+                          English Bulldog breed information
+                        </SelectItem>
+                        <SelectItem value="health-care">
+                          Health, care & temperament
+                        </SelectItem>
+                        <SelectItem value="breeding-program">
+                          Our breeding program & values
+                        </SelectItem>
+                        <SelectItem value="puppy-placement">
+                          Future puppy placement
+                        </SelectItem>
+                        <SelectItem value="just-learning">
+                          Not sure yet — just learning
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <p className="text-sm text-foreground/60 font-serif">
+                      (You can choose one or simply write in your message)
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="location" className="font-sans text-base">
+                      Where are you located?
+                    </Label>
+                    <Input
+                      id="location"
+                      name="location"
+                      value={formData.location}
+                      onChange={handleChange}
+                      disabled={isSubmitting}
+                      className="border-2 border-primary/20 focus:border-secondary"
+                      placeholder="Your city or region"
+                    />
+                    <p className="text-sm text-foreground/60 font-serif">
+                      City / region — helps us give relevant guidance
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -246,22 +330,6 @@ export default function ContactPage() {
                 <h3 className="text-2xl font-bold text-primary mb-4 font-heading">
                   Your Message
                 </h3>
-                <div className="space-y-3 mb-4">
-                  <p className="text-sm text-foreground/70 font-serif">
-                    • Tell us a little about what brought you here today.
-                  </p>
-                  <p className="text-sm text-foreground/70 font-serif">
-                    • You're welcome to share:
-                  </p>
-                  <ul className="list-disc list-inside space-y-1 ml-4 text-sm text-foreground/70 font-serif">
-                    <li>What stage of research you're in</li>
-                    <li>Any questions you have about the breed</li>
-                    <li>Your general timeline (if you have one)</li>
-                  </ul>
-                  <p className="text-sm text-foreground/70 font-serif">
-                    • There's no "right" amount to write — even a short message is perfectly fine.
-                  </p>
-                </div>
                     <Textarea
                       id="message"
                       name="message"
@@ -272,8 +340,24 @@ export default function ContactPage() {
                   rows={8}
                       className="border-2 border-primary/20 focus:border-secondary resize-none"
                   placeholder="Your message..."
-                    />
-                  </div>
+                />
+                <div className="space-y-3 mt-2">
+                  <p className="text-sm text-foreground/60 font-serif">
+                    • Tell us a little about what brought you here today.
+                  </p>
+                  <p className="text-sm text-foreground/60 font-serif">
+                    • You're welcome to share:
+                  </p>
+                  <ul className="list-disc list-inside space-y-1 ml-4 text-sm text-foreground/60 font-serif">
+                    <li>What stage of research you're in</li>
+                    <li>Any questions you have about the breed</li>
+                    <li>Your general timeline (if you have one)</li>
+                  </ul>
+                  <p className="text-sm text-foreground/60 font-serif">
+                    • There's no "right" amount to write — even a short message is perfectly fine.
+                  </p>
+                </div>
+              </div>
 
               {/* Before You Submit Section */}
               <div className="p-6 bg-primary/5 rounded-lg border-2 border-primary/10">
@@ -353,7 +437,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
 
       <Footer />
     </div>
