@@ -11,7 +11,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { AnimatedReveal } from "@/components/animated-reveal";
 import { AnimatedText } from "@/components/animated-text";
-import { MapPin, Mail, Phone } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
 
@@ -20,7 +19,7 @@ export default function ContactPage() {
     name: "",
     email: "",
     phone: "",
-    subject: "",
+    location: "",
     message: "",
     time: "",
   });
@@ -79,7 +78,7 @@ export default function ContactPage() {
         name: "",
         email: "",
         phone: "",
-        subject: "",
+        location: "",
         message: "",
         time: "",
       });
@@ -103,22 +102,24 @@ export default function ContactPage() {
           <div className="max-w-3xl">
             <AnimatedReveal
               as="p"
-              className="text-base md:text-lg  font-bold text-secondary tracking-wide uppercase mb-3"
+              className="text-xl text-foreground/70 font-serif leading-relaxed mb-4"
               variant="slide-up"
             >
-              Get in Touch
+              We're here to help you learn, plan, and decide — at your own pace.
             </AnimatedReveal>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-primary mb-6 text-balance font-heading">
-              <AnimatedText text="Contact Us" />
-            </h1>
+            <AnimatedReveal
+              as="p"
+              className="text-xl text-foreground/70 font-serif leading-relaxed mb-4"
+              delayMs={60}
+            >
+              Whether you're just beginning to research the English Bulldog breed or you're considering a future placement, we're happy to answer questions and share honest guidance about our program.
+            </AnimatedReveal>
             <AnimatedReveal
               as="p"
               className="text-xl text-foreground/70 font-serif leading-relaxed"
               delayMs={120}
             >
-              We'd love to hear from you. Whether you have questions about our
-              bulldogs, our program, or are ready to enquire about a puppy,
-              we're here to help.
+              There's no obligation and no pressure — just clear information and thoughtful replies.
             </AnimatedReveal>
           </div>
         </div>
@@ -126,21 +127,18 @@ export default function ContactPage() {
 
       {/* Contact Content */}
       <section className="py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* Contact Form */}
-            <div>
-              <h2 className="text-3xl font-bold text-primary mb-6 font-heading">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="mb-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4 font-heading">
                 Request Information
               </h2>
-              <p className="text-foreground/70 font-serif mb-8 leading-relaxed">
-                Fill out the form below and we'll get back to you as soon as
-                possible. We look forward to learning about you and answering
-                any questions you may have.
-              </p>
+            <p className="text-foreground/70 font-serif leading-relaxed">
+              We respond to all enquiries within 24–48 hours.
+            </p>
+          </div>
 
               {submitted ? (
-                <div className="p-8 bg-secondary/10 rounded-lg border-2 border-secondary">
+            <div className="p-8 bg-secondary/10 rounded-lg border-2 border-secondary mb-12">
                   <h3 className="text-2xl font-bold text-primary mb-4 font-heading">
                     Thank You!
                   </h3>
@@ -150,13 +148,22 @@ export default function ContactPage() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-8 mb-16">
                   <input type="hidden" name="time" value={formData.time} />
-                  <div className="grid md:grid-cols-2 gap-6">
+              
+              {/* Your Details Section */}
+              <div>
+                <h3 className="text-2xl font-bold text-primary mb-6 font-heading">
+                  Your Details
+                </h3>
+                <div className="space-y-6">
                     <div className="space-y-2">
-                      <Label htmlFor="name" className="font-sans">
-                        Full Name <span className="text-secondary">*</span>
+                    <Label htmlFor="name" className="font-sans text-base">
+                      Full Name
                       </Label>
+                    <p className="text-sm text-foreground/60 font-serif mb-2">
+                      (So we know who we're speaking with)
+                    </p>
                       <Input
                         id="name"
                         name="name"
@@ -165,13 +172,17 @@ export default function ContactPage() {
                         required
                         disabled={isSubmitting}
                         className="border-2 border-primary/20 focus:border-secondary"
-                        placeholder="Your name"
+                      placeholder="Your full name"
                       />
                     </div>
+
                     <div className="space-y-2">
-                      <Label htmlFor="email" className="font-sans">
-                        Email Address <span className="text-secondary">*</span>
+                    <Label htmlFor="email" className="font-sans text-base">
+                      Email Address
                       </Label>
+                    <p className="text-sm text-foreground/60 font-serif mb-2">
+                      (This is our main way of replying)
+                    </p>
                       <Input
                         id="email"
                         name="email"
@@ -183,14 +194,15 @@ export default function ContactPage() {
                         className="border-2 border-primary/20 focus:border-secondary"
                         placeholder="your@email.com"
                       />
-                    </div>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="phone" className="font-sans">
-                        Phone Number
+                    <Label htmlFor="phone" className="font-sans text-base">
+                      Phone Number (optional)
                       </Label>
+                    <p className="text-sm text-foreground/60 font-serif mb-2">
+                      Optional — email works perfectly. If you'd prefer a call, you can mention a good time below.
+                    </p>
                       <Input
                         id="phone"
                         name="phone"
@@ -202,27 +214,54 @@ export default function ContactPage() {
                         placeholder="Your phone number"
                       />
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="subject" className="font-sans">
-                        Subject <span className="text-secondary">*</span>
-                      </Label>
-                      <Input
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        required
-                        disabled={isSubmitting}
-                        className="border-2 border-primary/20 focus:border-secondary"
-                        placeholder="What is this about?"
-                      />
-                    </div>
-                  </div>
+                </div>
+              </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="message" className="font-sans">
-                      Your Message <span className="text-secondary">*</span>
-                    </Label>
+              {/* Location Section */}
+              <div>
+                <h3 className="text-2xl font-bold text-primary mb-4 font-heading">
+                  About Your Enquiry
+                </h3>
+                <div className="space-y-2">
+                  <Label htmlFor="location" className="font-sans text-base">
+                    Where are you located?
+                  </Label>
+                  <p className="text-sm text-foreground/60 font-serif mb-2">
+                    (City / region — helps us give relevant guidance)
+                  </p>
+                  <Input
+                    id="location"
+                    name="location"
+                    value={formData.location}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
+                    className="border-2 border-primary/20 focus:border-secondary"
+                    placeholder="Your city or region"
+                  />
+                </div>
+              </div>
+
+              {/* Your Message Section */}
+              <div>
+                <h3 className="text-2xl font-bold text-primary mb-4 font-heading">
+                  Your Message
+                </h3>
+                <div className="space-y-3 mb-4">
+                  <p className="text-sm text-foreground/70 font-serif">
+                    • Tell us a little about what brought you here today.
+                  </p>
+                  <p className="text-sm text-foreground/70 font-serif">
+                    • You're welcome to share:
+                  </p>
+                  <ul className="list-disc list-inside space-y-1 ml-4 text-sm text-foreground/70 font-serif">
+                    <li>What stage of research you're in</li>
+                    <li>Any questions you have about the breed</li>
+                    <li>Your general timeline (if you have one)</li>
+                  </ul>
+                  <p className="text-sm text-foreground/70 font-serif">
+                    • There's no "right" amount to write — even a short message is perfectly fine.
+                  </p>
+                </div>
                     <Textarea
                       id="message"
                       name="message"
@@ -230,124 +269,91 @@ export default function ContactPage() {
                       onChange={handleChange}
                       required
                       disabled={isSubmitting}
-                      rows={6}
+                  rows={8}
                       className="border-2 border-primary/20 focus:border-secondary resize-none"
-                      placeholder="Tell us about yourself, your family, and what you're looking for..."
+                  placeholder="Your message..."
                     />
+                  </div>
+
+              {/* Before You Submit Section */}
+              <div className="p-6 bg-primary/5 rounded-lg border-2 border-primary/10">
+                <h3 className="text-lg font-bold text-primary mb-3 font-heading">
+                  Before You Submit
+                </h3>
+                <ul className="space-y-2 text-foreground/70 font-serif text-sm">
+                  <li>• We work with families across New Zealand & Australia</li>
+                  <li>• We focus on responsible breeding, health, and temperament</li>
+                  <li>• We're happy to answer early-stage questions</li>
+                  <li>• If you'd like a phone conversation, just let us know</li>
+                </ul>
                   </div>
 
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-sans"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-sans text-lg py-6"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                {isSubmitting ? "Sending..." : "Submit Enquiry"}
                   </Button>
                 </form>
               )}
-            </div>
 
-            {/* Contact Information */}
-            <div>
-              <h2 className="text-3xl font-bold text-primary mb-6 font-heading">
-                Get in Touch
+          {/* What Happens Next Section */}
+          <div className="mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6 font-heading">
+              What Happens Next?
               </h2>
-              <p className="text-foreground/70 font-serif mb-8 leading-relaxed">
-                We welcome enquiries from families who are seriously considering
-                adding an English Bulldog to their home. Don't hesitate to reach
-                out—we're happy to answer questions even if you're still in the
-                early stages of your research.
+            <div className="space-y-4 text-foreground/70 font-serif leading-relaxed">
+              <p className="text-lg font-semibold text-primary">
+                Once your message is sent:
               </p>
-
-              <div className="space-y-6 mb-12">
-                <div className="flex gap-4 items-start">
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center shrink-0">
-                    <MapPin className="w-5 h-5 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-primary font-heading mb-1">
-                      Location
-                    </h3>
-                    <p className="text-foreground/70 font-serif">
-                      New Zealand & Australia
-                    </p>
-                    <p className="text-foreground/50 font-serif text-sm">
-                      Serving families across New Zealand and Australia
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4 items-start">
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center shrink-0">
-                    <Mail className="w-5 h-5 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-primary font-heading mb-1">
-                      Email
-                    </h3>
-                    <p className="text-foreground/70 font-serif">
-                      info@heartlandbulls.com
-                    </p>
-                    <p className="text-foreground/50 font-serif text-sm">
-                      We typically respond within 24-48 hours
+              <ul className="space-y-3 ml-4">
+                <li className="flex items-start gap-2">
+                  <span className="text-secondary mt-1">•</span>
+                  <span>You'll hear back from us within 24–48 hours.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-secondary mt-1">•</span>
+                  <span>We'll respond by email unless you request otherwise</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-secondary mt-1">•</span>
+                  <span>If helpful, we can arrange a phone conversation at a time that suits you</span>
+                </li>
+              </ul>
+              <p className="mt-4">
+                In the meantime, you may enjoy exploring our{" "}
+                <a href="/education" className="text-secondary hover:underline font-semibold">
+                  Breed Information
+                </a>{" "}
+                or{" "}
+                <a href="/program" className="text-secondary hover:underline font-semibold">
+                  Our Program
+                </a>{" "}
+                pages to learn more about our approach.
                     </p>
                   </div>
                 </div>
 
-                <div className="flex gap-4 items-start">
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center shrink-0">
-                    <Phone className="w-5 h-5 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-primary font-heading mb-1">
-                      Phone
+          {/* Thank You Section */}
+          <div className="text-center p-8 bg-secondary/10 rounded-lg border-2 border-secondary">
+            <h3 className="text-2xl font-bold text-primary mb-4 font-heading">
+              Thank you for reaching out
                     </h3>
-                    <p className="text-foreground/70 font-serif">
-                      Available upon request
-                    </p>
-                    <p className="text-foreground/50 font-serif text-sm">
-                      Please email first to arrange a call
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Trust Message */}
-              <div className="p-8 bg-primary/5 rounded-lg border-2 border-primary/10">
-                <h3 className="text-xl font-bold text-primary mb-4 font-heading">
-                  A Personal Note
-                </h3>
-                <p className="text-foreground/70 font-serif leading-relaxed mb-4">
-                  When you reach out to us, you're not contacting a
-                  business—you're connecting with a family who truly loves this
-                  breed. We take the time to get to know every prospective
-                  family because we want to ensure the best possible match for
-                  both you and your future bulldog.
-                </p>
-                <p className="text-foreground/70 font-serif leading-relaxed">
-                  We're not just breeders; we're bulldog lovers who want to
-                  share that joy with others. We look forward to hearing from
-                  you.
-                </p>
-                <p className="text-primary font-sans font-medium mt-4">
-                  — The Heartland Bulls Family
-                </p>
-              </div>
-            </div>
+            <p className="text-foreground/70 font-serif leading-relaxed mb-6">
+              We appreciate families who take the time to research carefully and ask thoughtful questions.
+            </p>
+            <p className="text-primary font-sans font-medium">
+              — Heartland Bulldogs
+            </p>
+            <p className="text-foreground/60 font-serif text-sm mt-2">
+              Serving New Zealand & Australia since 2015
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Established Banner */}
-      <section className="py-12 bg-secondary/10 border-y-2 border-secondary">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-lg text-primary font-sans font-medium">
-            Heartland Bulls — English Bulldog Breeder in New Zealand and
-            Australia — Established 2015
-          </p>
-        </div>
-      </section>
 
       <Footer />
     </div>
